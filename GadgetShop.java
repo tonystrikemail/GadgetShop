@@ -4,7 +4,7 @@
  * and error messages
  * --------------  
  * @author Tony Strike
- * @version 1.00
+ * @version 1.01
  * ==============
  */
 
@@ -51,22 +51,35 @@ public class GadgetShop extends Application
         int startY = 20;
         int offset = 35;
 
-        // Lables-------------
-        TextField modelField = createFieldWithLabel("Model: ",labelX, startY,fieldX, root);
-        TextField priceField = createFieldWithLabel("Price: ",labelX, startY + offset, fieldX,root);
-        TextField weightField = createFieldWithLabel("Weight: ",labelX, startY + offset*2, fieldX,root);
-        TextField sizeField = createFieldWithLabel("Size: ",labelX, startY + offset*3, fieldX,root);
+        // Lables -------------
+        //TextField modelField = createFieldWithLabel("Model: ",labelX, startY,fieldX, root);
+        //TextField priceField = createFieldWithLabel("Price: ",labelX, startY + offset, fieldX,root);
+        //TextField weightField = createFieldWithLabel("Weight: ",labelX, startY + offset*2, fieldX,root);
+        //TextField sizeField = createFieldWithLabel("Size: ",labelX, startY + offset*3, fieldX,root);
 
-        root.getChildren().addAll(
-                   logArea);
-
+        //Using list and for loop to generate text fields and labels
+        String[] labels = {
+                "Model",
+                "Price",
+                "Weight",
+                "Size",
+                "Credit",
+            };
+        //create list to store the labels/fields
+        TextField[] fields = new TextField[labels.length];
+        for (int i = 0; i < labels.length; i++){
+            fields[i] = createFieldWithLabel(labels[i], labelX, startY + offset * i, fieldX, root);
+        }
+        // End of Labels code ---------------
+        
+        // set the log area
+        root.getChildren().add(logArea);
         logArea.setLayoutX(20);
         logArea.setLayoutY(360);
         logArea.setPrefWidth(500);
         logArea.setPrefHeight(230);
 
         // creates the window container for all the fields, buttons and info
-
         stage.setScene(new Scene(root,600,800));
         stage.setTitle("Tony's Gadget Shop");
         stage.show();

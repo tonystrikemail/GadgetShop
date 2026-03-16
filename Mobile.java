@@ -1,4 +1,3 @@
-
 /**
  * ==============
  * This is a subclass of the superclass Gadget contains additional specific 
@@ -69,7 +68,7 @@ public class Mobile extends Gadget
             callingCredit = callingCredit - durationTime; // reduce the cerdit
         }
         else {
-            System.out.println("Not enough credit to make this call, Please add more minutes.");
+            System.out.println("Not enough credit to make this call, please add more minutes.");
         }
     }
 
