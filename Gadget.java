@@ -23,7 +23,6 @@ public class Gadget {
         this.price= price;
         this.weight= weight;
         this.size= size; 
-
     }
 
     //Accessor methods:
