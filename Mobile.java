@@ -25,12 +25,13 @@ public class Mobile extends Gadget
     public int getCallingCredit(){
         return callingCredit;
     }
+
     @Override
     // send information in to the GUI as string
     public String toString() {
         return "Mobile{model= '" 
-            + getModel() + "', credit=" 
-            + callingCredit + "mins}";
+        + getModel() + "', credit=" 
+        + callingCredit + "mins}";
     }
     // get the information from Gadget superclass display method
     @Override
@@ -39,7 +40,7 @@ public class Mobile extends Gadget
         super.display();
         System.out.println("callingCredit=" +callingCredit);
     }
-    
+
     // -----------------
     // Actions methods
     // -----------------
