@@ -20,13 +20,13 @@ public class GadgetShop extends Application
     // array list containing all the gadgets in our shop
     private final ArrayList<Gadget> gadgets = new ArrayList<>();
 
-    // log area displang output messages
+    // log area to display output messages
     private final TextArea logArea = new TextArea();
     // set fixed width of 200px for all fields
     private static final int FIELD_WIDTH = 200;
     // set fixed width of 150px for all BUTTONS
     private static final int BUTTON_WIDTH = 150;
-    // set fixed 
+    
     // create a method for creating labels with fields and add them to the pane
     private TextField createFieldWithLabel(String text, int labelX, int labelY, int fieldX, Pane root){
         //label object
@@ -38,6 +38,7 @@ public class GadgetShop extends Application
         field.setLayoutX(fieldX);
         field.setLayoutY(labelY);
         field.setPrefWidth(FIELD_WIDTH);//same width to all fields
+      
         //add the elements to the pane
         root.getChildren().addAll(label,field);
         return field;// returns the field so that we can read data
@@ -56,13 +57,15 @@ public class GadgetShop extends Application
     public void start(Stage stage){
 
         Pane root = new Pane();
-        // variables for the coordinates of the fields and labels for quick alligment
+        // assign variables to the coordinates of the fields and labels for quick alligment
         int labelX = 20;
         int fieldX = 150;
-        int startY = 20;
-        int offset = 35;
+        int startY = 20; // initial starting point for the first element on the pane
+        int offset = 32; // creating a offset variable to keep the spacing equal
 
-        // Lables -------------
+        //============================
+        //====== CREATE LABLES =======
+        //============================
         //TextField modelField = createFieldWithLabel("Model: ",labelX, startY,fieldX, root);
         //TextField priceField = createFieldWithLabel("Price: ",labelX, startY + offset, fieldX,root);
         //TextField weightField = createFieldWithLabel("Weight: ",labelX, startY + offset*2, fieldX,root);
@@ -76,7 +79,7 @@ public class GadgetShop extends Application
                 "Size (eg 2x4x5):",
                 "Initial Credit (£):",
                 "Initial Memory (MB):",
-                "Phone No: ",
+                "Phone No:",
                 "Duration:",
                 "Download:",
                 "Gdget Index No:",
@@ -86,6 +89,7 @@ public class GadgetShop extends Application
         for (int i = 0; i < labels.length; i++){
             fields[i] = createFieldWithLabel(labels[i], labelX, startY + offset * i, fieldX, root);
         }
+        // change the name of the fields
         TextField modelField = fields[0];
         TextField priceField = fields[1];
         TextField weightField = fields[2];
@@ -96,28 +100,34 @@ public class GadgetShop extends Application
         TextField durationField = fields[7];
         TextField downloadField = fields[8];
         TextField indexField = fields[9];
+        //============================
+        //====== END OF LABLES =======
+        //============================
         
-        // End of Labels code ---------------
-        // Buttons --------------
+        //=============================
+        //====== CREATE BUTTONS =======
+        //=============================
         int buttonX = 370;    
         int buttStartY = 20;
-        int buttOffset = 35;
+        int buttOffset = 32;
         Button mobileButton = createButton("Add Mobile",buttonX,buttStartY + buttOffset * 4,root);
         Button mp3Button = createButton("Add MP3",buttonX,buttStartY + buttOffset * 5,root);
         Button callButton = createButton("Make a Call",buttonX,buttStartY + buttOffset * 6,root);
         Button downloadButton = createButton("Download Music",buttonX,buttStartY + buttOffset * 8,root);
         Button clearButton = createButton("Clear Fields",buttonX-350,buttStartY + buttOffset * 11,root);
         Button displayButton = createButton("Display All",buttonX,buttStartY + buttOffset * 11,root);
-        // End of Buttons code --------------
-
-        // set the log area
+         //=============================
+        //====== END OF BUTTONS =======
+        //=============================
+        
+        // set the LOG AREA
         root.getChildren().add(logArea);
         logArea.setLayoutX(20);
         logArea.setLayoutY(500);
         logArea.setPrefWidth(520);
         logArea.setPrefHeight(230);
 
-        // creates the window container for all the fields, buttons and info
+        // creates the PANE container for all the fields, buttons and info
         stage.setScene(new Scene(root,600,800));
         stage.setTitle("Tony's Gadget Shop");
         stage.show();
