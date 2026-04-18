@@ -1,75 +1,126 @@
 /**
  * ==============
- * This is a subclass of the superclass Gadget contains additional specific 
- *   characteristics for the Mobie gadgets 
- * --------------  
+ * This class is a subclass of Gadget.
+ * It represents an MP3 gadget and adds one extra attribute: available memory.
+ * The action methods update the object state , and the GUI is displaying messages to the user.
+ * 
+ * extends - means this class inherits from another class (Gadget)
+ * super - refers to the parent class (Gadget)
+ * @Override - replaces a method from the parent class (Gadget class)
+ * Class - blueprint for objects
+ * Object - instance of a class
+ * Field - variable inside a class
+ * Constructor - runs when object is created
+ * Method - block of code that performs an action
+ * Parameter - value passed into a method
+ * Return type - what a method gives back
+ * private - only used inside this class
+ * public - accessible from other classes
+ * --------------
  * @author Tony Strike
- * @version 1.00
+ * @version 3.00
  * ==============
  */
+
 public class MP3 extends Gadget
 {
-    // the attribute of MP3 gadgets
+    // =========================
+    // FIELD (ATTRIBUTE)
+    // =========================
+
+    // this field stores the currently available memory.
     private int availableMemory;
 
-    // constructor
-    public MP3(String model, double price, int weight, String size, int callingCredit){
-        //takes the attributes from super class to initialise
+    // =========================
+    // CONSTRUCTOR
+    // =========================
+
+    // This constructor creates an MP3 object. It receives the common Gadget values and the MP3-specific memory value.
+    public MP3(String model, double price, int weight, String size, int availableMemory)
+    {
+        // Call the parent constructor to initialise shared Gadget fields.
         super(model, price, weight, size);
 
-        //initializing its own attributes
+        // Store the MP3-specific value.
         this.availableMemory = availableMemory;
     }
-    // accessor method
-    public int getAvailableMemory(){
+
+    // =========================
+    // ACCESSOR
+    // =========================
+
+    // This method returns the current available memory.
+    public int getAvailableMemory()
+    {
         return availableMemory;
     }
 
-    @Override
-    // send information in to the GUI as string
-    public String toString() {
-        return "MP3{model= '" 
-        + getModel() + "', availableMemory=" 
-        + availableMemory + "MB}";
+    // =========================
+    // DOWNLOAD MUSIC
+    // =========================
+
+    // This method reduces available memory when music is downloaded. It returns true if the operation succeeds. It returns false if: memoryNeeded is not positive, there is not enough available memory
+
+    public boolean downloadMusic(int memoryNeeded)
+    {
+        // The download size must be greater than zero.
+        if (memoryNeeded <= 0)
+        {
+            return false;
+        }
+
+        // There must be enough available memory.
+        if (availableMemory < memoryNeeded)
+        {
+            return false;
+        }
+
+        // Reduce available memory.
+        availableMemory -= memoryNeeded;
+
+        return true;
     }
-    // get the information from Gadget superclass display method
+
+    // =========================
+    //  DELETE MUSIC
+    // =========================
+
+    // This method increases available memory when music is deleted. It returns true if the operation succeeds. It returns false if the input value is invalid.
+
+    public boolean deleteMusic(int memoryFreed)
+    {
+        // The amount freed must be positive.
+        if (memoryFreed <= 0)
+        {
+            return false;
+        }
+
+        // Increase available memory.
+        availableMemory += memoryFreed;
+
+        return true;
+    }
+
+    // =========================
+    // toString() - for logs and invetory display
+    // =========================
+
     @Override
-    public void display(){
+    public String toString()
+    {
+        return "Type: MP3 " + super.toString()+ "', available memory: " + availableMemory + " MB}";
+    }
+
+    // =========================
+    // display() - optional Terminal display
+    // =========================
+
+    // This method is for direct Terminal testing.
+    @Override
+    public void display()
+    {
         System.out.println("MP3");
         super.display();
-        System.out.println("availableMemory=" +availableMemory);
+        System.out.println("Available Memory= " + availableMemory);
     }
-
-    // -----------------
-    // Actions methods
-    // -----------------
-    // method to delete muisic and therefore freed memory
-
-    public void deleteMusic(int memoryGained){
-        //check for a positive value
-        if (memoryGained <= 0){    
-            System.out.println("Please enter a positive value (memory in MB).");
-            return;        
-        }
-        // increase the available memory 
-        availableMemory = availableMemory + memoryGained;
-        System.out.println ("You deleted " + memoryGained + " MB, and now you have " + availableMemory + " MB.");
-    }
-    // method to download music
-    public void downloadMusic(int trackMemory){
-        // check for positive value
-        if (trackMemory <=10){
-            System.out.println("Songs are minimum 10MB, please enter value larger than 10.");
-            return;// if the value is not positive ends the method
-        }
-        // check if there is enough available memory
-        if (availableMemory >= trackMemory){
-            availableMemory = availableMemory - trackMemory;
-            System.out.println("Downloded songs used " + trackMemory + " MB, and now you have " + availableMemory + " MB.");            
-        }
-        else {
-            System.out.println("Not enough memory to download music, please delete some tracks to free space.");
-        }
-    }
-
 }
