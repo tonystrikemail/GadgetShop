@@ -24,16 +24,12 @@
 
 public class MP3 extends Gadget
 {
-    // =========================
-    // FIELD (ATTRIBUTE)
-    // =========================
+    // ========================= // FIELD (ATTRIBUTE) // =========================
 
     // this field stores the currently available memory.
     private int availableMemory;
 
-    // =========================
-    // CONSTRUCTOR
-    // =========================
+    // ========================= //= CONSTRUCTOR =// =========================
 
     // This constructor creates an MP3 object. It receives the common Gadget values and the MP3-specific memory value.
     public MP3(String model, double price, int weight, String size, int availableMemory)
@@ -45,9 +41,7 @@ public class MP3 extends Gadget
         this.availableMemory = availableMemory;
     }
 
-    // =========================
-    // ACCESSOR
-    // =========================
+    // ========================= // ACCESSOR // =========================
 
     // This method returns the current available memory.
     public int getAvailableMemory()
@@ -55,9 +49,7 @@ public class MP3 extends Gadget
         return availableMemory;
     }
 
-    // =========================
-    // DOWNLOAD MUSIC
-    // =========================
+    // ========================= // DOWNLOAD MUSIC // =========================
 
     // This method reduces available memory when music is downloaded. It returns true if the operation succeeds. It returns false if: memoryNeeded is not positive, there is not enough available memory
 
@@ -81,11 +73,10 @@ public class MP3 extends Gadget
         return true;
     }
 
-    // =========================
-    //  DELETE MUSIC
-    // =========================
+    // ========================= //  DELETE MUSIC // =========================
 
     // This method increases available memory when music is deleted. It returns true if the operation succeeds. It returns false if the input value is invalid.
+    // This method is not used in GadgetShop. It's been left for additional feature, no needed for now.
 
     public boolean deleteMusic(int memoryFreed)
     {
@@ -101,9 +92,7 @@ public class MP3 extends Gadget
         return true;
     }
 
-    // =========================
-    // toString() - for logs and invetory display
-    // =========================
+    // ========================= // toString() // =========================
 
     @Override
     public String toString()
@@ -111,9 +100,7 @@ public class MP3 extends Gadget
         return "Type: MP3 " + super.toString()+ "', available memory: " + availableMemory + " MB}";
     }
 
-    // =========================
-    // display() - optional Terminal display
-    // =========================
+    // ========================= // display()  // =========================
 
     // This method is for direct Terminal testing.
     @Override
