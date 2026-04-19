@@ -26,16 +26,13 @@
 
 public class Mobile extends Gadget
 {
-    // =========================
-    // FIELD (ATTRIBUTE)
-    // =========================
+    
+    // ========================= // FIELD (ATTRIBUTE) // =========================
 
     // This stores the number of calling minutes currently available.
     private int callingCredit;
 
-    // =========================
-    // CONSTRUCTOR
-    // =========================
+    // ========================= //= CONSTRUCTOR =// =========================
 
     // This constructor creates a Mobile object. It receives the common Gadget values and the Mobile-specific credit value.
     public Mobile(String model, double price, int weight, String size, int callingCredit)
@@ -47,9 +44,7 @@ public class Mobile extends Gadget
         this.callingCredit = callingCredit;
     }
 
-    // =========================
-    // ACCESSOR (GETTER)
-    // =========================
+    // ========================= // ACCESSOR (GETTER) // =========================
 
     // This method returns the current calling credit.
     public int getCallingCredit()
@@ -57,9 +52,7 @@ public class Mobile extends Gadget
         return callingCredit;
     }
 
-    // =========================
-    // ADD CALLING CREDIT
-    // =========================
+    // =========================  // ADD CALLING CREDIT // =========================
 
     // This method adds extra minutes to the Mobile. It returns true if the operation succeeds. It returns false if the value is invalid.
     public boolean addCallingCredit(int minutesToAdd)
@@ -75,9 +68,7 @@ public class Mobile extends Gadget
         return true;
     }
 
-    // =========================
-    // MAKE A CALL
-    // =========================
+    // ========================= // MAKE A CALL  // =========================
 
     // This method reduces the calling credit when a call is made.
 
@@ -103,9 +94,7 @@ public class Mobile extends Gadget
         return true;
     }
 
-    // =========================
-    // toString() - for logs and inventory display
-    // =========================
+    // ========================= // toString() // =========================
 
     @Override
     public String toString()
@@ -114,9 +103,7 @@ public class Mobile extends Gadget
         return "Type: Mobile " + super.toString()+ "', credit: " + callingCredit + " min.}";
     }
 
-    // =========================
-    // display() - optional Terminal display
-    // =========================
+    // =========================// display() // =========================
 
     // This method can be useful for direct testing in the Terminal. It prints details to the Terminal.
     @Override
