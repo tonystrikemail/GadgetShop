@@ -30,17 +30,14 @@
 
 public class Gadget {
 
-    // =========================
-    // FIELDS (ATTRIBUTES)
-    // =========================
+    // =========================// FIELDS (ATTRIBUTES) // =========================
     private final String model;      // "model" is text
     private final double price;      // "price" is decimal
     private final int weight;        // "weight" is whole number in grams
     private final String size;       // "size" is text
 
-    // =========================
-    // CONSTRUCTOR
-    // =========================
+    // =========================//= CONSTRUCTOR =// =========================
+    
     public Gadget(String model, double price, int weight, String size) {
         // Assign the constructor parameters into the fields (initialisation)
         this.model = model;
@@ -49,9 +46,7 @@ public class Gadget {
         this.size = size;
     }
 
-    // =========================
-    // ACCESSOR METHODS (GETTERS)
-    // =========================
+    // =========================// ACCESSOR METHODS (GETTERS) // =========================
     public String getModel() {
         return model; // Return the model text
     }
@@ -68,9 +63,7 @@ public class Gadget {
         return size; // Return the size text
     }
 
-    // =========================
-    // toString() - used for logging in TextArea
-    // =========================
+    // ========================= // toString()  // =========================
     @Override
     public String toString() {
         // Build a readable one-line summary for logs
@@ -80,9 +73,7 @@ public class Gadget {
         + ", size: '" + getSize() + " mm";
     }
 
-    // =========================
-    // display() - prints details
-    // =========================
+    // ========================= // display()  // =========================
     public void display() {
         System.out.println("Gadget");
         System.out.println("model=" + model);
