@@ -49,16 +49,12 @@ import java.util.ArrayList;
 
 public class GadgetShop extends Application
 {
-    // =========================================================
-    // DATA STORAGE
-    // =========================================================
+    // ====================================   // DATA STORAGE   // =========================================================
 
     // This ArrayList stores all gadgets in the shop. Because Mobile and MP3 are subclasses of Gadget, both types can be stored in the same list.
     private final ArrayList<Gadget> gadgets = new ArrayList<Gadget>();
 
-    // =========================================================
-    // OUTPUT AREAS
-    // =========================================================
+    // ==================================  // OUTPUT AREAS   // =========================================================
 
     // Main log area for general messages, actions, and errors.
     private final TextArea logArea = new TextArea();
@@ -69,9 +65,7 @@ public class GadgetShop extends Application
     // Separate inventory area for MP3 gadgets only.
     private final TextArea mp3Area = new TextArea();
 
-    // =========================================================
-    // CONSISTENT SIZES
-    // =========================================================
+    // ===============================  // CONSISTENT SIZES  // =========================================================
 
     // Fixed width for input fields so the forms stay aligned.
     private static final int FIELD_WIDTH = 180;
@@ -79,9 +73,7 @@ public class GadgetShop extends Application
     // Fixed width for buttons so all buttons look consistent.
     private static final int BUTTON_WIDTH = 140;
 
-    // =========================================================
-    // HELPER METHODS FOR FIELD PARSING
-    // =========================================================
+    // ============================ // HELPER METHODS FOR FIELD PARSING   // =========================================================
 
     // This method takes a TextField, reads its text, .trim() removes extra spaces around it, and converts it into a double usig Double.parseDouble().
     private double parseDoubleField(TextField field) throws NumberFormatException
@@ -95,9 +87,7 @@ public class GadgetShop extends Application
         return Integer.parseInt(field.getText().trim());
     }
 
-    // =========================================================
-    // MESSAGE METHODS
-    // =========================================================
+    // ===================================   // MESSAGE METHODS   // =========================================================
 
     // This method shows a information message. The exact same text goes to: Terminal and logArea
     private void showInfoMessage(String message)
@@ -129,9 +119,7 @@ public class GadgetShop extends Application
         return note;
     }
 
-    // =========================================================
-    // FIELD STYLE METHODS
-    // =========================================================
+    // ======================================  // FIELD STYLE METHODS  // =========================================================
 
     // This method removes any custom style from a field. We use it before validation so old red borders disappear.
     private void clearFieldStyle(TextField field)
@@ -145,9 +133,7 @@ public class GadgetShop extends Application
         field.setStyle("-fx-border-color: red; -fx-border-width: 2;");
     }
 
-    // =========================================================
-    // REUSABLE VALIDATION HELPERS
-    // =========================================================
+    // ============================== // REUSABLE VALIDATION HELPERS  // =========================================================
 
     // Validates a required text field.
     private void validateRequiredText(TextField field, String fieldName, StringBuilder errors)
@@ -211,9 +197,7 @@ public class GadgetShop extends Application
         }
     }
 
-    // =========================================================
-    // FORM VALIDATION METHODS
-    // =========================================================
+    // ==========================   // FORM VALIDATION METHODS   // =========================================================
 
     // Validates the Add Mobile form.
     private String validateMobileAddForm(
@@ -262,9 +246,8 @@ public class GadgetShop extends Application
         validatePhoneNumber (phoneNumberField, errors);
         return errors.toString();
     }
-    // ==========================
-    // VALIDATE UK PHONE NUMBER
-    // ==========================
+    
+    // ========================== // VALIDATE UK PHONE NUMBER  // ==========================
 
     private void validatePhoneNumber(TextField field, StringBuilder errors)
     {
@@ -291,9 +274,7 @@ public class GadgetShop extends Application
         return errors.toString();
     }
 
-    // ======================
-    // = GUI HELPER METHODS =
-    // ======================
+    // ======================// GUI HELPER METHODS // ======================
 
     // Creates a TextField with a consistent width.
     private TextField createField()
@@ -347,9 +328,7 @@ public class GadgetShop extends Application
         area.setStyle("-fx-border-color: #888888;");
     }
 
-    // =========================================================
-    // INVENTORY UPDATE METHODS
-    // =========================================================
+    // ==============================  // INVENTORY UPDATE METHODS   //=========================================================
 
     // Refreshes the Mobile inventory area.
     private void updateMobileArea()
@@ -408,16 +387,13 @@ public class GadgetShop extends Application
     @Override
     public void start(Stage stage)
     {
-        // =========================================================
-        // ROOT CONTAINER
-        // =========================================================
+        
+        // ====================================// ROOT CONTAINER // =========================================================
 
         BorderPane root = new BorderPane();
         root.setPadding(new Insets(15));
 
-        // =========================================================
-        // MAIN TITLE
-        // =========================================================
+        // ==================================   // MAIN TITLE  // =========================================================
 
         Label mainTitle = new Label("Tony's Gadget Shop");
         mainTitle.setStyle("-fx-font-size: 22px; -fx-font-weight: bold;");
@@ -428,9 +404,7 @@ public class GadgetShop extends Application
 
         root.setTop(titleBox);
 
-        // =========================================================
-        // MOBILE FIELDS
-        // =========================================================
+        // =================================== // MOBILE FIELDS  // =========================================================
 
         // Fields used to add a new Mobile gadget.
         TextField mobileModelField = createField();
@@ -444,9 +418,7 @@ public class GadgetShop extends Application
         TextField phoneNumberField = createField();
         TextField durationField = createField();
 
-        // =========================================================
-        // MP3 FIELDS
-        // =========================================================
+        // ===================================== // MP3 FIELDS // =========================================================
 
         // Fields used to add a new MP3 gadget.
         TextField mp3ModelField = createField();
@@ -459,9 +431,7 @@ public class GadgetShop extends Application
         TextField mp3IndexField = createField();
         TextField downloadSizeField = createField();
 
-        // =========================================================
-        // MOBILE SECTION
-        // =========================================================
+        // =================================== // MOBILE SECTION  // =========================================================
 
         Label mobileTitle = createSectionTitle("Mobile Gadget");
 
@@ -537,9 +507,7 @@ public class GadgetShop extends Application
         mobileLogSection.setMaxWidth(Double.MAX_VALUE);
         mobileSection.setMaxWidth(Double.MAX_VALUE);
 
-        // =========================================================
-        // MP3 SECTION
-        // =========================================================
+        // ================================= // MP3 SECTION // =========================================================
 
         Label mp3Title = createSectionTitle("MP3 Gadget");
 
@@ -615,9 +583,8 @@ public class GadgetShop extends Application
         mp3GadgetSection.setMaxWidth(Double.MAX_VALUE);
         mp3LogSection.setMaxWidth(Double.MAX_VALUE);
         mp3Section.setMaxWidth(Double.MAX_VALUE);
-        // =========================================================
-        // CENTRE AREA
-        // =========================================================
+        
+        // ===================================== // CENTRE AREA // =========================================================
 
         HBox centreBox = new HBox(20, mobileSection, mp3Section);
         HBox.setHgrow(mobileSection, Priority.ALWAYS);
@@ -628,9 +595,7 @@ public class GadgetShop extends Application
 
         root.setCenter(centreBox);
 
-        // =========================================================
-        // SHARED BUTTONS AND LOG AREA
-        // =========================================================
+        // ==================================== // SHARED BUTTONS AND LOG AREA // =========================================================
 
         Button clearFieldsButton = createButton("Clear Fields");
         Button displayAllButton = createButton("Display All");
@@ -660,19 +625,14 @@ public class GadgetShop extends Application
 
         root.setBottom(bottomSection);
 
-        // =========================================================
-        // INITIAL INVENTORY DISPLAY
-        // =========================================================
+        // ================================= // INITIAL INVENTORY DISPLAY  // =========================================================
 
         updateInventoryAreas();
 
-        // =========================================================
-        // BUTTON ACTIONS
-        // =========================================================
+        // ================================== // BUTTON ACTIONS  // =========================================================
 
-        // -------------------------
-        // ADD MOBILE
-        // -------------------------
+        // ------------------------- // ADD MOBILE // -------------------------
+        
         addMobileButton.setOnAction(e -> {
 
                     String validationErrors = validateMobileAddForm(
@@ -703,9 +663,8 @@ public class GadgetShop extends Application
                     showInfoMessage("Added Gadget at index " + (gadgets.size() - 1) + ": " + m);
             });
 
-        // -------------------------
-        // MAKE A CALL
-        // -------------------------
+        // ------------------------- // MAKE A CALL   // -------------------------
+        
         makeCallButton.setOnAction(e -> {
 
                     String validationErrors = validateMakeCallForm(
@@ -780,9 +739,8 @@ public class GadgetShop extends Application
                     );
             });
 
-        // -------------------------
-        // ADD MP3
-        // -------------------------
+        // -------------------------   // ADD MP3  // -------------------------
+        
         addMP3Button.setOnAction(e -> {
 
                     String validationErrors = validateMP3AddForm(
@@ -813,9 +771,8 @@ public class GadgetShop extends Application
                     showInfoMessage("Added Gadget at index " + (gadgets.size() - 1) + ": " + p);
             });
 
-        // -------------------------
-        // DOWNLOAD MUSIC
-        // -------------------------
+        // -------------------------// DOWNLOAD MUSIC // -------------------------
+        
         downloadMusicButton.setOnAction(e -> {
 
                     String validationErrors = validateDownloadForm(
@@ -886,9 +843,8 @@ public class GadgetShop extends Application
                     );
             });
 
-        // -------------------------
-        // CLEAR FIELDS
-        // -------------------------
+        // ------------------------- // CLEAR FIELDS  // -------------------------
+        
         clearFieldsButton.setOnAction(e -> {
 
                     // Clear Mobile fields
@@ -934,9 +890,8 @@ public class GadgetShop extends Application
                     showInfoMessage("All input fields have been cleared.");
             });
 
-        // -------------------------
-        // DISPLAY ALL
-        // -------------------------
+        // -------------------------  // DISPLAY ALL  // -------------------------
+        
         displayAllButton.setOnAction(e -> {
 
                     if (gadgets.isEmpty())
@@ -953,15 +908,13 @@ public class GadgetShop extends Application
                         showInfoMessage("Index " + i + ": " + g);
                     }
             });
-        // -------------------------
-        // Exit the application
-        // -------------------------
-        exitButton.setOnAction(e -> {
+        
+            // ------------------------- // Exit the application   // -------------------------
+        
+            exitButton.setOnAction(e -> {
                     System.exit(0);
             });
-        // =========================================================
-        // STAGE / SCENE
-        // =========================================================
+        // ===============================  // STAGE / SCENE  // =========================================================
 
         Scene scene = new Scene(root, 1460, 760);
         stage.setScene(scene);
